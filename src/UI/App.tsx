@@ -7,8 +7,11 @@ function App() {
 
   return (
     <>
-      <Outlet />
-      <SideBar />
+      <div className="flex h-screen">
+        <SideBar />
+        <Outlet />
+      </div>
+
     </>
   )
 }

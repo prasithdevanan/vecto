@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom"
 import App from "../App"
 import Dashboard from "../pages/dashboard/dashboard"
+import Setting from "../pages/setting/setting"
+import Collection from "../pages/collection/collection"
 
 
 const router = createBrowserRouter([
@@ -11,6 +13,14 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <Dashboard />
+            },
+            {
+                path: "/collection",
+                element: <Collection />
+            },
+            {
+                path: "/settings",
+                element: <Setting />
             }
         ]
     }])
