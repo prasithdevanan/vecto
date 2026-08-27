@@ -6,14 +6,17 @@ function SideBar() {
         {
             name: "Workspace",
             path: "/",
+            icon: "bi bi-house-door",
         },
         {
             name: "Collection",
             path: "/collection",
+            icon: "bi bi-collection",
         },
         {
             name: "Settings",
             path: "/settings",
+            icon: "bi bi-gear",
         },
     ];
 
@@ -42,16 +45,19 @@ function SideBar() {
                         key={item.path}
                         to={item.path}
                         className={({ isActive }) =>
-                            `block w-full rounded-lg px-3 py-2.5 text-sm font-medium no-underline transition-colors ${isActive
+                            `flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium no-underline transition-colors ${isActive
                                 ? "bg-[var(--color-primary-variant)] !text-[var(--color-primary)]"
                                 : "!text-[var(--color-text-variant)] hover:bg-[var(--color-bg-variant)] hover:!text-[var(--color-text)]"
                             }`
                         }
                     >
-                        {item.name}
+                        <i className={item.icon}></i>
+
+                        <span>{item.name}</span>
                     </NavLink>
                 ))}
             </nav>
+
 
             {/* Bottom */}
             <div className="mt-auto">
