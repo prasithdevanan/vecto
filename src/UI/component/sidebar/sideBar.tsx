@@ -2,9 +2,10 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 
 function SideBar() {
+    const [isOpen, setIsOpen] = React.useState(false);
     const menuItems = [
         {
-            name: "Workspace",
+            name: "Home",
             path: "/",
             icon: "bi bi-house-door",
         },
@@ -21,17 +22,29 @@ function SideBar() {
     ];
 
     return (
-        <aside className="flex h-screen w-[220px] flex-col border-r border-[var(--color-border)] bg-[var(--color-bg)] p-3">
+        <aside className={`flex h-screen flex-col border-r border-[var(--color-border)] bg-[var(--color-bg)] p-3 ${isOpen ? "w-[220px]" : "w-[66px]"} transition-all duration-300`}>
 
             {/* Brand */}
-            <div className="mb-8 px-3">
-                <h1 className="!m-0 !text-lg !font-semibold !text-[var(--color-text)]">
-                    Vecto
-                </h1>
+            <div className="mb-8 px-3 flex justify-between items-center">
+                {isOpen &&
+                    <div>
+                        <h1 className="!m-0 !text-lg !font-semibold !text-[var(--color-text)]">
+                            Vecto
+                        </h1>
 
-                <p className="mt-1 text-xs text-[var(--color-text-variant)]">
-                    SVG Workspace
-                </p>
+                        <p className="mt-1 text-xs text-[var(--color-text-variant)] whitespace-nowrap">
+                            SVG Workspace
+                        </p>
+                    </div>
+                }
+                <button className="cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
+                    {isOpen ? (
+                        <i className="bi bi-layout-sidebar-inset-reverse"></i>
+                    ) : (
+                        <i className="bi bi-layout-sidebar-inset"></i>
+                    )
+                    }
+                </button>
             </div>
 
             {/* Navigation */}
@@ -53,7 +66,7 @@ function SideBar() {
                     >
                         <i className={item.icon}></i>
 
-                        <span>{item.name}</span>
+                        {isOpen && <span>{item.name}</span>}
                     </NavLink>
                 ))}
             </nav>

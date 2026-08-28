@@ -2,7 +2,11 @@ import React from 'react'
 
 const collection = () => {
   return (
-    <div>collection</div>
+    <>
+      <section className="w-full">
+        <p>Collection</p>
+      </section>
+    </>
   )
 }
 
