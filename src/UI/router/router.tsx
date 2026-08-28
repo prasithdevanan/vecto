@@ -1,11 +1,11 @@
-import { createBrowserRouter } from "react-router-dom"
+import { createHashRouter } from "react-router-dom"
 import App from "../App"
 import Dashboard from "../pages/dashboard/dashboard"
 import Setting from "../pages/setting/setting"
 import Collection from "../pages/collection/collection"
 
 
-const router = createBrowserRouter([
+const router = createHashRouter([
     {
         path: "/",
         element: <App />,

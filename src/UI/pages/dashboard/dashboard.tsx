@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Icon from '../../assets/Icon'
 import { toast } from 'react-toastify';
 
@@ -8,11 +8,11 @@ function dashboard() {
     const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
 
     const [allIcons, setAllIcons] = useState<any>(Icon);
-    const themeChnage = () => {
-        const theme = document.documentElement.getAttribute('data-theme')
-        theme === 'dark' ? document.documentElement.setAttribute('data-theme', 'light') :
-            document.documentElement.setAttribute('data-theme', 'dark')
-    }
+    // const themeChnage = () => {
+    //     const theme = document.documentElement.getAttribute('data-theme')
+    //     theme === 'dark' ? document.documentElement.setAttribute('data-theme', 'light') :
+    //         document.documentElement.setAttribute('data-theme', 'dark')
+    // }
 
     // useEffect(() => {
     //     if (progress >= 100) return;
