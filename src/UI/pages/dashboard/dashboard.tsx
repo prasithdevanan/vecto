@@ -8,11 +8,7 @@ function dashboard() {
     const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
 
     const [allIcons, setAllIcons] = useState<any>(Icon);
-    // const themeChnage = () => {
-    //     const theme = document.documentElement.getAttribute('data-theme')
-    //     theme === 'dark' ? document.documentElement.setAttribute('data-theme', 'light') :
-    //         document.documentElement.setAttribute('data-theme', 'dark')
-    // }
+
 
     // useEffect(() => {
     //     if (progress >= 100) return;
@@ -102,7 +98,7 @@ function dashboard() {
 
 
 
-                                        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-semibold text-(--color-text-variant) sm:px-2.5 sm:py-1 sm:text-xs">
+                                        <span className="rounded-full bg-(--color-primary-variant) px-2 py-0.5 text-[10px] font-semibold text-(--color-text-variant) sm:px-2.5 sm:py-1 sm:text-xs">
                                             #{index + 1}
                                         </span>
                                     </div>

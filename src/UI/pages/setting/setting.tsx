@@ -1,8 +1,11 @@
-
+import { Theme } from "../../component/theme";
 
 const setting = () => {
   return (
-    <div>setting</div>
+    <section className="flex flex-col items-center justify-center w-full h-full">
+      <p>Setting</p>
+      <Theme />
+    </section>
   )
 }
 
