@@ -30,3 +30,11 @@ If you are developing a production application, we recommend enabling type-aware
 ```
 
 See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+
+##Typescript file Creation template comments template
+npm init -y
+npm install express cors dotenv
+npm install -D typescript  @types/node @types/express @types/cors
+npx tsc --init
+npm install -D tsx
+
