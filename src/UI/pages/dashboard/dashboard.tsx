@@ -1,13 +1,17 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Icon from '../../assets/Icon'
 import { toast } from 'react-toastify';
+import { useContext } from "react";
+import { AppContext } from '../../component/AppContent';
+import AddSVG from './addSVG'
 
 
 function dashboard() {
     // const [progress, setProgress] = useState(0);
     const [copiedIcon, setCopiedIcon] = useState<string | null>(null);
-
+    const { backendUrl } = useContext(AppContext);
     const [allIcons, setAllIcons] = useState<any>(Icon);
+    console.log("Backend URL:", backendUrl); // Log the backend URL to verify it's being accessed correctly
 
 
     // useEffect(() => {
@@ -50,6 +54,23 @@ function dashboard() {
         })
         setAllIcons(Object.fromEntries(filtered))
     }
+
+    useEffect(() => {
+        const fetchIcons = async () => {
+            try {
+                const response = await fetch(`${backendUrl}/fetchdata`);
+                if (!response.ok) {
+                    throw new Error('Failed to fetch icons');
+                }
+                const data = await response.json();
+                console.log('Fetched icons:', data);
+            } catch (error) {
+                console.error('Error fetching icons:', error);
+            }
+        };
+
+        fetchIcons();
+    }, []);
 
 
     return (
@@ -108,6 +129,7 @@ function dashboard() {
                         }
                     </div>
                 </div >
+                <AddSVG />
             </section >
         </>
     )
