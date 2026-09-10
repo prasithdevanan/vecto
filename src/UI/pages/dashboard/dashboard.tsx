@@ -3,6 +3,7 @@ import { toast } from 'react-toastify';
 import { useContext } from "react";
 import { AppContext } from '../../component/AppContent';
 import AddSVG from './addSVG'
+import { useNavigate } from "react-router-dom";
 
 
 function dashboard() {
@@ -12,17 +13,9 @@ function dashboard() {
     const [allIcons, setAllIcons] = useState<any>([]);
     const [Icon, setIcon] = useState<any>([]);
     const [openAddSVG, setOpenAddSVG] = useState(false);
+    const navigate = useNavigate();
     console.log("Backend URL:", backendUrl); // Log the backend URL to verify it's being accessed correctly
 
-
-    // useEffect(() => {
-    //     if (progress >= 100) return;
-    //     const interval = setInterval(() => {
-    //         setProgress((prev) => Math.min(prev + 1, 100));
-    //     }, 100);
-
-    //     return () => clearInterval(interval);
-    // }, [progress]);
 
     //Copy to clipboard
     const handleCopy = async (text: string) => {
@@ -104,12 +97,12 @@ function dashboard() {
                     <h2 className="mt-3 text-md font-semibold mb-3 text-(--color-text)/60">ICONS</h2>
                     <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
 
-                        {
+                        {allIcons.length > 0 ? (
                             Object.entries(allIcons).map(([index, item]: any) => {
                                 return (
-                                    <div key={index} className="group relative flex min-h-24 flex-col items-center justify-center gap-2 rounded-2xl border border-(--color-border) bg-(--color-bg) px-3 py-4 shadow-sm transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-variant)] hover:shadow-lg sm:min-h-28 sm:gap-3 sm:px-5 sm:py-6">
+                                    <div key={index} className="group relative flex min-h-24 flex-col items-center justify-center gap-2 rounded-2xl border border-(--color-border) bg-(--color-bg) px-3 py-4 shadow-sm transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-variant)] hover:shadow-lg sm:min-h-28 sm:gap-3 sm:px-5 sm:py-6" onClick={() => navigate("/svgDetails", { state: { svgData: item.svg, name: item.name } })}>
 
-                                        <button type="button" disabled={copiedIcon === item} className="absolute top-2 right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-gray-500 transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white active:scale-95 sm:top-3 sm:right-3 sm:h-9 sm:w-9 sm:rounded-xl" title="Copy" onClick={() => handleCopy(item.svg as string)}>
+                                        <button type="button" disabled={copiedIcon === item} className="absolute top-2 right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-gray-500 transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white active:scale-95 sm:top-3 sm:right-3 sm:h-9 sm:w-9 sm:rounded-xl" title="Copy" onClick={(e) => { handleCopy(item.svg as string); e.stopPropagation(); }}>
 
                                             <i className="bi bi-copy text-xs sm:text-sm"></i>
                                         </button>
@@ -145,8 +138,8 @@ function dashboard() {
                                                                     );
 
                                                                 return `<svg${newAttrs}${width && height
-                                                                        ? ` viewBox="0 0 ${width} ${height}"`
-                                                                        : ""
+                                                                    ? ` viewBox="0 0 ${width} ${height}"`
+                                                                    : ""
                                                                     } width="100%" height="100%">`;
                                                             }
                                                         )
@@ -192,7 +185,12 @@ function dashboard() {
 
                                 )
                             })
-                        }
+                        ) : (
+                            <div className="col-span-full flex flex-col items-center justify-center gap-2 rounded-2xl h-(calc(100vh-200px))">
+                                <i className="bi bi-collection text-3xl text-(--color-primary)"></i>
+                                <p className="text-center text-lg font-semibold text-(--color-text) sm:text-xl">No Collection</p>
+                            </div>
+                        )}
                     </div>
                 </div >
                 <div className={`fixed inset-0 z-50 flex items-center justify-center bg-black/30 backdrop-blur-sm transition-opacity duration-300 ${openAddSVG ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`} onClick={() => setOpenAddSVG(false)}>

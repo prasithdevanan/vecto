@@ -65,10 +65,24 @@ function AddSVG({ setOpenAddSVG }: any) {
                 )}
 
             </div>
-
+            {selectedFile && (
+                <div>
+                    <input
+                        type="text"
+                        placeholder="Enter a name for the SVG"
+                        className="mt-5 block w-full rounded-lg border-2 border-(--color-border) bg-(--color-bg) p-2.5 text-sm text-(--color-text) focus:border-(--color-primary) focus:ring-(--color-primary) focus:ring-1 focus:outline-none"
+                        value={selectedFile.name}
+                        onChange={(e) => {
+                            const newFile = new File([selectedFile], e.target.value, { type: selectedFile.type });
+                            setSelectedFile(newFile);
+                        }}
+                    />
+                </div>
+            )}
             <div className="mt-5 flex justify-end">
                 <button
-                    className="inline-flex cursor-pointer items-center rounded-lg bg-(--color-primary) px-4 py-2.5 text-sm font-medium text-white transition-all hover:bg-(--color-primary-hover) hover:shadow-lg"
+                    disabled={!selectedFile}
+                    className={`inline-flex cursor-pointer items-center rounded-lg bg-(--color-primary) px-4 py-2.5 text-sm font-medium text-white transition-all hover:bg-(--color-primary-hover) hover:shadow-lg ${!selectedFile ? 'opacity-50 cursor-not-allowed' : ''}`}
                     onClick={handleFileUpload}
                 >
                     Upload

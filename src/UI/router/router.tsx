@@ -3,6 +3,7 @@ import App from "../App"
 import Dashboard from "../pages/dashboard/dashboard"
 import Setting from "../pages/setting/setting"
 import Collection from "../pages/collection/collection"
+import SvgDetails from "../pages/dashboard/svgDetails";
 
 
 const router = createHashRouter([
@@ -21,6 +22,10 @@ const router = createHashRouter([
             {
                 path: "/settings",
                 element: <Setting />
+            },
+            {
+                path: "/svgDetails",
+                element: <SvgDetails />
             }
         ]
     }])
