@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
+import { Theme } from "../../component/theme";
 
 function SideBar() {
     const [isOpen, setIsOpen] = React.useState(false);
@@ -20,7 +21,6 @@ function SideBar() {
             icon: "bi bi-gear",
         },
     ];
-
     return (
         <aside className={`flex h-screen flex-col border-r border-[var(--color-border)] bg-[var(--color-bg)] p-3 ${isOpen ? "w-[220px]" : "w-[66px]"} transition-all duration-300`}>
 
@@ -86,6 +86,7 @@ function SideBar() {
                     </p>
                 </div>
             </div>
+            {/* <Theme /> */}
         </aside>
     );
 }

@@ -16,7 +16,6 @@ function dashboard() {
     const navigate = useNavigate();
     console.log("Backend URL:", backendUrl); // Log the backend URL to verify it's being accessed correctly
 
-
     //Copy to clipboard
     const handleCopy = async (text: string) => {
         try {
@@ -77,6 +76,10 @@ function dashboard() {
 
         fetchIcons();
     }, [backendUrl]);
+
+
+
+
 
 
     return (

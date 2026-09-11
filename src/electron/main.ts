@@ -5,18 +5,24 @@ import { isDev } from './util.js'
 
 app.on('ready', () => {
     const mainWindow = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: 1200,
+        height: 800,
         title: 'Vecto',
+        // frame: false,
         webPreferences: {
             nodeIntegration: true,
+            contextIsolation: false
         },
     })
 
     if (isDev()) {
-        mainWindow.loadURL('http://localhost:5123')
+        mainWindow.loadURL('http://localhost:5123');
+        mainWindow.webContents.openDevTools();
     } else {
 
         mainWindow.loadFile(path.join(app.getAppPath(), '/dist-react/index.html'))
+        mainWindow.setMenuBarVisibility(false);
     }
 })
+
+

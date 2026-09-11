@@ -9,6 +9,13 @@
         // define where to put generate the js
         "outDir": "../../dist-electron",
         // ignore the error from dependancies
-        "skipLibCheck": true
-    }
+        "skipLibCheck": true,
+        "erasableSyntaxOnly": true
+    },
+    "include": [
+        "./*.ts"
+    ],
+    "exclude": [
+        "node_modules"
+    ]
 }
