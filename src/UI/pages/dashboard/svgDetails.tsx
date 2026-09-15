@@ -292,7 +292,7 @@ function SvgDetails() {
                                 </span>
                             </div>
 
-                            <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-(--color-border) p-8 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-gray-300 hover:scrollbar-thumb-gray-400" style={{ backgroundColor: background === "transparent" ? "transparent" : background }}>
+                            <div className="min-h-0 flex-1 overflow-auto rounded-xl border border-(--color-border) p-8 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" style={{ backgroundColor: background === "transparent" ? "transparent" : background }}>
                                 <div className="flex min-h-full min-w-full items-center justify-center">
                                     <div className="shrink-0" dangerouslySetInnerHTML={{ __html: svgData }} />
                                 </div>

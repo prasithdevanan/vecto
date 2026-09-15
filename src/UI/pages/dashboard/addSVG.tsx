@@ -29,11 +29,11 @@ function AddSVG({ setOpenAddSVG }: any) {
     }
 
     return (
-        <section className="w-full min-w-100 sm:w-1/2 rounded-2xl bg-(--color-bg) p-6 shadow-md">
+        <section className="w-full min-w-100 sm:w-1/2 rounded-2xl bg-(--color-bg) p-6 shadow-md border border-(--color-border)">
             <h1 className="mb-5 text-xl font-semibold text-(--color-text)">
                 Add SVG
             </h1>
-            <button className="absolute top-4 right-4 cursor-pointer hover:text-red-500" onClick={() => setOpenAddSVG(false)}><span><i className="bi bi-x-lg"></i></span></button>
+            <button className="absolute top-4 right-4 cursor-pointer hover:text-red-500 transition-all duration-150 focus:outline-none" onClick={() => setOpenAddSVG(false)}><span><i className="bi bi-x-lg"></i></span></button>
 
             <label htmlFor="svg-upload" className="inline-flex cursor-pointer items-center rounded-xl bg-(--color-primary) px-4 py-2.5 text-sm font-medium text-white transition-all hover:bg-(--color-primary-hover) hover:shadow-lg">
                 <span className="mr-2">
