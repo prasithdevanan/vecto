@@ -5,11 +5,13 @@ type Theme = 'light' | 'dark';
 type AppContextType = {
     backendUrl: string;
     theme: Theme;
+    setTheme: (theme: Theme) => void;
 };
 
 export const AppContext = createContext<AppContextType>({
     backendUrl: "http://localhost:3000",
     theme: 'light',
+    setTheme: () => { },
 });
 
 export const AppProvider = ({ children }: { children: React.ReactNode }) => {
@@ -26,7 +28,7 @@ export const AppProvider = ({ children }: { children: React.ReactNode }) => {
     }, [theme]);
 
     return (
-        <AppContext.Provider value={{ backendUrl, theme }}>
+        <AppContext.Provider value={{ backendUrl, theme, setTheme }}>
             {children}
         </AppContext.Provider>
     );
