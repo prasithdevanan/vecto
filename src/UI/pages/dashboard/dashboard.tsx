@@ -4,6 +4,7 @@ import { useContext } from "react";
 import { AppContext } from '../../component/AppContent';
 import AddSVG from './addSVG'
 import { useNavigate } from "react-router-dom";
+import Bot from '../Ai_bot/bot';
 
 
 function dashboard() {
@@ -102,10 +103,11 @@ function dashboard() {
 
                         {allIcons.length > 0 ? (
                             Object.entries(allIcons).map(([index, item]: any) => {
+                                console.log("Item:", item);
                                 return (
                                     <div key={index} className="group relative flex min-h-24 flex-col items-center justify-center gap-2 rounded-2xl border border-(--color-border) bg-(--color-bg) px-3 py-4 shadow-sm transition-all duration-200 ease-out hover:-translate-y-1 hover:border-[var(--color-primary)] hover:bg-[var(--color-primary-variant)] hover:shadow-lg sm:min-h-28 sm:gap-3 sm:px-5 sm:py-6" onClick={() => navigate("/svgDetails", { state: { svgData: item.svg, name: item.name } })}>
 
-                                        <button type="button" disabled={copiedIcon === item} className="absolute top-2 right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-gray-500 transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white active:scale-95 sm:top-3 sm:right-3 sm:h-9 sm:w-9 sm:rounded-xl" title="Copy" onClick={(e) => { handleCopy(item.svg as string); e.stopPropagation(); }}>
+                                        <button type="button" disabled={copiedIcon === item.svg} className="absolute top-2 right-2 flex h-8 w-8 cursor-pointer items-center justify-center rounded-lg text-gray-500 transition-all duration-200 hover:bg-[var(--color-primary)] hover:text-white active:scale-95 sm:top-3 sm:right-3 sm:h-9 sm:w-9 sm:rounded-xl" title="Copy" onClick={(e) => { handleCopy(item.svg as string); e.stopPropagation(); }}>
 
                                             <i className="bi bi-copy text-xs sm:text-sm"></i>
                                         </button>
@@ -202,7 +204,7 @@ function dashboard() {
                     </div>
                 </div>
 
-
+                <Bot />
             </section >
         </>
     )

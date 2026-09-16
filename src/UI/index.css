@@ -24,6 +24,10 @@
 
   --color-card: #ffffff;
   --color-input: #ffffff;
+
+
+  --color-ai-gradient: linear-gradient(90deg, #1a91ff 0%, #263dec 100%);
+
 }
 
 
@@ -55,6 +59,7 @@
   --color-card: #171b24;
   --color-input: #11151c;
 }
+
 
 
 body {
@@ -183,4 +188,34 @@ input {
 /* Toast Animation */
 .Toastify__toast {
   animation: toastSlide 0.35s ease-out;
+}
+
+
+@theme {
+  --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-slide-down: slide-down 0.3s ease-out;
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slide-down {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+  }
 }
